@@ -1,14 +1,18 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.sequelize = void 0;
-var env = require('dotenv');
+const env = require('dotenv');
 env.config();
-var sequelize_typescript_1 = require("sequelize-typescript");
-var user_model_1 = require("../models/user.model");
-var sequelize;
+const sequelize_typescript_1 = require("sequelize-typescript");
+const transaction_model_1 = require("../models/transaction.model");
+const user_model_1 = require("../models/user.model");
+const wallet_model_1 = require("../models/wallet.model");
+let sequelize;
 exports.sequelize = sequelize;
-var Models = [
-    user_model_1.User
+const Models = [
+    user_model_1.User,
+    wallet_model_1.Wallet,
+    transaction_model_1.Transactions
 ];
 if (process.env.ENV_NODE === 'dev') {
     exports.sequelize = sequelize = new sequelize_typescript_1.Sequelize({
@@ -19,6 +23,12 @@ if (process.env.ENV_NODE === 'dev') {
         host: process.env.DB_HOST,
         logging: false,
         models: Models,
+        dialectOptions: {
+            ssl: {
+                require: false,
+                rejectUnauthorized: false
+            }
+        }
     });
 }
 else {
