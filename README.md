@@ -7,6 +7,8 @@ Demo Credit gives the power to
 - Transfer funds from one Demo Credit customer to another with their unique account number
 - Withdraw your funds into your personal bank account
 
+![image](https://user-images.githubusercontent.com/67710631/225766792-726d20f0-8ab9-4a3b-b52f-cc99ae31f845.png)
+
  
 
 # API Endpoints
